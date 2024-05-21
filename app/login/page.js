@@ -1,184 +1,120 @@
 "use client"
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
+
 const Login = () => {
-    const { data: session } = useSession()
-    if (session) {
-         return (
-         <>
-            <p className='text-white'>Signed in as {session.user.email} <br />  </p>
-            <button onClick={() => signOut()}>Sign out</button> 
-         </>) 
+    const { data:session } = useSession()
+
+    if(session){
+        return (
+            <>Hello</>
+        )
     }
+    
     return (
-        <div classNameName='text-white text-center text-4xl font-bold container mx-auto min-h-[87vh]'>
-            <div className="h-screen w-screen flex justify-center items-center dark:bg-gray-900">
-                <div className="grid gap-8">
-                    <div
-                        id="back-div"
-                        className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4"
-                    >
-                        <div
-                            className="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 m-2"
-                        >
-                            <h1 className="pt-8 pb-6 font-bold dark:text-gray-400 text-5xl text-center cursor-default">
-                                Log in
-                            </h1>
-                            <form action="#" method="post" className="space-y-4">
-                                <div>
-                                    <label for="email" className="mb-2  dark:text-gray-400 text-lg">Email</label>
-                                    <input
-                                        id="email"
-                                        className="border p-3 dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 shadow-md placeholder:text-base  ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                                        type="email"
-                                        placeholder="Email"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label for="password" className="mb-2 dark:text-gray-400 text-lg">Password</label>
-                                    <input
-                                        id="password"
-                                        className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                                        type="password"
-                                        placeholder="Password"
-                                        required
-                                    />
-                                </div>
-                                <a
-                                    className="group text-blue-400 transition-all duration-100 ease-in-out"
-                                    href="#"
-                                >
-                                    <span
-                                        className="bg-left-bottom bg-gradient-to-r text-sm from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                                    >
-                                        Forget your password?
-                                    </span>
-                                </a> 
-
-
-                                
-                                <button
-                                    className="bg-gradient-to-r dark:text-gray-300 from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
-                                    type="submit"
-                                >
-                                    LOG IN
-                                </button>
-                            </form>
-                            <div className="flex flex-col mt-4 items-center justify-center text-sm">
-                                <h3 className="dark:text-gray-300">
-                                    Don't have an account?
-                                    <a
-                                        className="group text-blue-400 transition-all duration-100 ease-in-out"
-                                        href="#"
-                                    >
-                                        <span
-                                            className="bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                                        >
-                                            Sign Up
-                                        </span>
-                                    </a>
-                                </h3>
-                            </div>
-
-                            <div
-                                id="third-party-auth"
-                                className="flex items-center justify-center mt-5 flex-wrap"
-                            >
-                                <button
-                                    href="#"
-                                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                                >
-                                    <img
-                                        className="max-w-[25px]"
-                                        src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-                                        alt="Google"
-                                    />
-                                </button>
-                                <button
-                                    href="#"
-                                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                                >
-                                    <img
-                                        className="max-w-[25px]"
-                                        src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/"
-                                        alt="Linkedin"
-                                    />
-                                </button>
-                                <button
-                                    href="#"
-                                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                                >
-                                    <img
-                                        className="max-w-[25px] filter dark:invert"
-                                        src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
-                                        alt="Github"
-                                        onClick={()=>signIn('github')}
-                                    />
-                                </button>
-                                <button
-                                    href="#"
-                                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                                >
-                                    <img
-                                        className="max-w-[25px]"
-                                        src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
-                                        alt="Facebook"
-                                    />
-                                </button>
-                                <button
-                                    href="#"
-                                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                                >
-                                    <img
-                                        className="max-w-[25px] dark:gray-100"
-                                        src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
-                                        alt="twitter"
-                                    />
-                                </button>
-
-                                <button
-                                    href="#"
-                                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                                >
-                                    <img
-                                        className="max-w-[25px]"
-                                        src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"
-                                        alt="apple"
-                                    />
-                                </button>
-                            </div>
-
-                            <div
-                                className="text-gray-500 flex text-center flex-col mt-4 items-center text-sm"
-                            >
-                                <p className="cursor-default">
-                                    By signing in, you agree to our
-                                    <a
-                                        className="group text-blue-400 transition-all duration-100 ease-in-out"
-                                        href="#"
-                                    >
-                                        <span
-                                            className="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                                        >
-                                            Terms
-                                        </span>
-                                    </a>
-                                    and
-                                    <a
-                                        className="group text-blue-400 transition-all duration-100 ease-in-out"
-                                        href="#"
-                                    >
-                                        <span
-                                            className="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                                        >
-                                            Privacy Policy
-                                        </span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 dark:bg-gray-900 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md p-6 md:p-8 lg:p-10">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-gray-900 dark:text-gray-200 mb-6">Log in</h1>
+                <form className="space-y-4">
+                    <div>
+                        <label htmlFor="email" className="block text-lg text-gray-700 dark:text-gray-300">Email</label>
+                        <input
+                            id="email"
+                            className="mt-1 block w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-300"
+                            type="email"
+                            placeholder="Email"
+                            required
+                        />
                     </div>
+                    <div>
+                        <label htmlFor="password" className="block text-lg text-gray-700 dark:text-gray-300">Password</label>
+                        <input
+                            id="password"
+                            className="mt-1 block w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-300"
+                            type="password"
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
+                    <a href="#" className="text-blue-500 hover:underline text-sm">Forgot your password?</a>
+                    <button
+                        className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white p-3 rounded-lg shadow-md hover:scale-105 transition-transform"
+                        type="submit"
+                    >
+                        LOG IN
+                    </button>
+                </form>
+                <div className="text-center text-gray-700 dark:text-gray-300 mt-4">
+                    Don't have an account? 
+                    <a href="#" className="text-blue-500 hover:underline ml-1">Sign Up</a>
+                </div>
+                <div className="flex justify-center space-x-4 mt-4">
+                    <button
+                        className="p-2 rounded-full shadow-md hover:scale-105 transition-transform"
+                        onClick={() => signIn('google')}
+                    >
+                        <img
+                            className="w-6 h-6"
+                            src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
+                            alt="Google"
+                        />
+                    </button>
+                    <button
+                        className="p-2 rounded-full shadow-md hover:scale-105 transition-transform"
+                        onClick={() => signIn('linkedin')}
+                    >
+                        <img
+                            className="w-6 h-6"
+                            src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/"
+                            alt="Linkedin"
+                        />
+                    </button>
+                    <button
+                        className="p-2 rounded-full shadow-md hover:scale-105 transition-transform"
+                        onClick={() => signIn('github')}
+                    >
+                        <img
+                            className="w-6 h-6"
+                            src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
+                            alt="Github"
+                        />
+                    </button>
+                    <button
+                        className="p-2 rounded-full shadow-md hover:scale-105 transition-transform"
+                        onClick={() => signIn('facebook')}
+                    >
+                        <img
+                            className="w-6 h-6"
+                            src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
+                            alt="Facebook"
+                        />
+                    </button>
+                    <button
+                        className="p-2 rounded-full shadow-md hover:scale-105 transition-transform"
+                        onClick={() => signIn('twitter')}
+                    >
+                        <img
+                            className="w-6 h-6"
+                            src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
+                            alt="Twitter"
+                        />
+                    </button>
+                    <button
+                        className="p-2 rounded-full shadow-md hover:scale-105 transition-transform"
+                        onClick={() => signIn('apple')}
+                    >
+                        <img
+                            className="w-6 h-6"
+                            src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"
+                            alt="Apple"
+                        />
+                    </button>
+                </div>
+                <div className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+                    By signing in, you agree to our 
+                    <a href="#" className="text-blue-500 hover:underline ml-1">Terms</a> 
+                    and 
+                    <a href="#" className="text-blue-500 hover:underline ml-1">Privacy Policy</a>.
                 </div>
             </div>
         </div>
